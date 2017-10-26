@@ -15,9 +15,12 @@ def main():
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
 
+    fr = 'x'
+    to = 'x'
+
     msg = MIMEMultipart()
-    msg['From'] = 'x'
-    msg['To'] = 'x'
+    msg['From'] = fr
+    msg['To'] = to
     msg['Subject'] = 'INFRASAFE CHECK'
 
     server.login("x", "x")
@@ -25,7 +28,7 @@ def main():
     body = commands.getoutput('df')
     msg.attach(MIMEText(body, 'plain'))
 
-    server.sendmail("x", "x", msg.as_string())
+    server.sendmail(fr, to, msg.as_string())
     server.quit()
 
 
